@@ -34,4 +34,7 @@ def upload_file():
         return 'Allowed file types are png, jpg, jpeg, gif'
 
 if __name__ == '__main__':
+    # make sure the folder exists
+    if not os.path.exists(UPLOAD_FOLDER):
+        os.makedirs(UPLOAD_FOLDER)
     app.run(debug=True, port=5002)
