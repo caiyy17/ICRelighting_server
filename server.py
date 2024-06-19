@@ -7,8 +7,10 @@ from PIL import Image
 from flask import jsonify
 
 import comfy_api as comfy_api
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 UPLOAD_FOLDER = 'uploads/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -84,10 +86,11 @@ def sync_image():
         "status": "success",
         "images": base64_images
     }
+    print("Image send successfully")
     return jsonify(response_data)
 
 if __name__ == '__main__':
     # make sure the folder exists
     if not os.path.exists(UPLOAD_FOLDER):
         os.makedirs(UPLOAD_FOLDER)
-    app.run(debug=True, port=5002)
+    app.run(debug=True, port=5002, host='0.0.0.0')
