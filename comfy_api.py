@@ -7,7 +7,7 @@ import json
 import urllib.request
 import urllib.parse
 
-server_address = "127.0.0.1:8188"
+server_address = "127.0.0.1:60005"
 client_id = str(uuid.uuid4())
 
 def queue_prompt(prompt):
@@ -74,3 +74,6 @@ def comfy_generate(path):
             image.save(f"uploads/output_{node_id}_{index}.png")
             index += 1
 
+if __name__ == "__main__":
+    comfy_generate("image.png")
+    print("Images saved successfully")

@@ -52,7 +52,7 @@
   },
   "9": {
     "inputs": {
-      "image": "test_clip.jpg",
+      "image": "image.png",
       "upload": "image"
     },
     "class_type": "LoadImage",
@@ -90,7 +90,7 @@
       "width": 768,
       "height": 1024,
       "interpolation": "lanczos",
-      "keep_proportion": true,
+      "method": "stretch",
       "condition": "always",
       "multiple_of": 8,
       "image": [
@@ -409,7 +409,7 @@
   "132": {
     "inputs": {
       "add_noise": true,
-      "noise_seed": 123,
+      "noise_seed": 908656492957330,
       "cfg": 7,
       "model": [
         "37",

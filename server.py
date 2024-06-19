@@ -53,6 +53,8 @@ def process_image():
     filepath = os.path.join(UPLOAD_FOLDER, image.filename)
     image.save(filepath)
 
+    print('Image successfully uploaded')
+
     comfy_api.comfy_generate(filepath)
 
     # 在这里处理图像并生成四张Base64图片（此处为示例，实际处理可能不同）
