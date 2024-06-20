@@ -9,6 +9,7 @@ import urllib.parse
 
 server_address = "127.0.0.1:60005"
 client_id = str(uuid.uuid4())
+from config import workflow
 
 def queue_prompt(prompt):
     p = {"prompt": prompt, "client_id": client_id}
@@ -52,7 +53,7 @@ def get_images(ws, prompt):
     return output_images
 
 def comfy_generate(path):
-    with open("workflow_api.json", "r", encoding="utf-8") as f:
+    with open(workflow + ".json", "r", encoding="utf-8") as f:
         prompt_text = f.read()
 
     prompt = json.loads(prompt_text)
