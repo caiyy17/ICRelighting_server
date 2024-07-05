@@ -5,6 +5,7 @@ import base64
 import io
 from PIL import Image
 from flask import jsonify
+import time
 
 import comfy_api as comfy_api
 from flask_cors import CORS
@@ -43,6 +44,7 @@ def upload_file():
 
 @app.route('/process', methods=['POST'])
 def process_image():
+    start = time.time()
     if 'image' not in request.files:
         return jsonify({"error": "No image uploaded"}), 400
     
@@ -72,7 +74,7 @@ def process_image():
         "status": "success",
         "images": base64_images
     }
-    
+    print('time taken to process image:', time.time() - start)
     return jsonify(response_data)
 
 @app.route('/sync', methods=['POST'])
@@ -134,6 +136,7 @@ def upload_file_v():
 
 @app.route('/processv', methods=['POST'])
 def process_video():
+    start = time.time()
     out_folder = os.path.join(app.config['UPLOAD_FOLDER'], 'out_frames')
         # 删除现有的帧文件夹
     if os.path.exists(out_folder):
@@ -156,6 +159,7 @@ def process_video():
                 image= Image.open(io.BytesIO(results[image_node[i]][image_index[i]]))
                 image.save(os.path.join(out_folder, f'out{i+1}', filename))
     sync_image_v()
+    print('time taken to process video:', time.time() - start)
     return 'Video successfully processed'
 
 @app.route('/sync_v', methods=['POST'])
