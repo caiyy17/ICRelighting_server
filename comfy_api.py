@@ -65,15 +65,16 @@ def comfy_generate(path):
     ws.connect("ws://{}/ws?clientId={}".format(server_address, client_id))
     images = get_images(ws, prompt)
 
-    # save images to disk
-    for node_id in images:
-        index = 0
-        for image_data in images[node_id]:
-            from PIL import Image
-            import io
-            image = Image.open(io.BytesIO(image_data))
-            image.save(f"uploads/output_{node_id}_{index}.png")
-            index += 1
+    # # save images to disk
+    # for node_id in images:
+    #     index = 0
+    #     for image_data in images[node_id]:
+    #         from PIL import Image
+    #         import io
+    #         image = Image.open(io.BytesIO(image_data))
+    #         image.save(f"uploads/output_{node_id}_{index}.png")
+    #         index += 1
+    return images
 
 if __name__ == "__main__":
     comfy_generate("image.png")

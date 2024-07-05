@@ -2,13 +2,22 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Upload a File</title>
+    <title>IC-Relighting</title>
   </head>
   <body>
     <h1>Upload a File</h1>
     <form method="post" action="upload" enctype="multipart/form-data">
       <input type="file" name="file">
       <input type="submit" value="Upload">
+    </form>
+    <h1>Upload a Video</h1>
+    <form method="post" action="uploadv" enctype="multipart/form-data">
+      <input type="file" name="file">
+      <input type="submit" value="Upload">
+    </form>
+    <h1>Process Video</h1>
+    <form method="post" action="processv" enctype="multipart/form-data">
+      <input type="submit" value="Process">
     </form>
   </body>
 </html>

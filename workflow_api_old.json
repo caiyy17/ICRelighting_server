@@ -87,7 +87,7 @@
   },
   "39": {
     "inputs": {
-      "width": 768,
+      "width": 1024,
       "height": 1024,
       "interpolation": "lanczos",
       "keep_proportion": true,

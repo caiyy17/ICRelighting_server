@@ -87,10 +87,10 @@
   },
   "39": {
     "inputs": {
-      "width": 768,
+      "width": 1024,
       "height": 1024,
       "interpolation": "lanczos",
-      "method": "stretch",
+      "method": "keep proportion",
       "condition": "always",
       "multiple_of": 8,
       "image": [
