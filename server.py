@@ -158,6 +158,9 @@ def process_video():
             for i in range(5):
                 image= Image.open(io.BytesIO(results[image_node[i]][image_index[i]]))
                 image.save(os.path.join(out_folder, f'out{i+1}', filename))
+            print(f'Frame {filename} successfully processed')
+            # wait for 1 second
+            time.sleep(1)
     sync_image_v()
     print('time taken to process video:', time.time() - start)
     return 'Video successfully processed'
@@ -171,7 +174,7 @@ def sync_image_v():
     base64_videos = []
     output_video_pattern = os.path.join(app.config['UPLOAD_FOLDER'], 'out_%d.mp4')
     for i in range(5):
-        ffmpeg_command = f"ffmpeg -framerate 8 -i {os.path.join(out_folder, f'out{i+1}', 'frame_%04d.png')} {output_video_pattern % (i+1)} -y"
+        ffmpeg_command = f"ffmpeg -framerate 8 -i {os.path.join(out_folder, f'out{i+1}', 'frame_%04d.png')} -vcodec libx264 -profile:v high -preset slow -crf 22 -pix_fmt yuv420p -acodec aac -b:a 192k {output_video_pattern % (i+1)} -y"
         os.system(ffmpeg_command)
         print(f'Video {i+1} successfully generated')
 

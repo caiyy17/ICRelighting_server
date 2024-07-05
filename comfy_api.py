@@ -42,8 +42,9 @@ def get_images(ws, prompt):
                         break #Execution is done
                     else:
                         current_node = data['node']
+                        print(current_node)
         else:
-            print(current_node)
+            print("out" + current_node)
             # if current_node == 'save_image_websocket_node':
             if True:
                 images_output = output_images.get(current_node, [])
