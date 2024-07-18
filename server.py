@@ -149,7 +149,10 @@ def process_video():
     os.makedirs(os.path.join(out_folder, 'out5'))
 
     # all image in os.path.join(frame_folder, 'frame_%04d.png')
-    for filename in os.listdir(os.path.join(app.config['UPLOAD_FOLDER'], 'frames')):
+    list = os.listdir(os.path.join(UPLOAD_FOLDER, 'frames'))
+    list.sort()
+    print(list)
+    for filename in list:
         filepath = os.path.join(app.config['UPLOAD_FOLDER'], 'frames', filename)
         if filename.endswith('.png'):
             results = comfy_api.comfy_generate(filepath)
@@ -197,4 +200,4 @@ if __name__ == '__main__':
     # make sure the folder exists
     if not os.path.exists(UPLOAD_FOLDER):
         os.makedirs(UPLOAD_FOLDER)
-    app.run(debug=True, port=5002, host='0.0.0.0')
+    app.run(debug=True, port=7788, host='0.0.0.0')

@@ -7,7 +7,7 @@ import json
 import urllib.request
 import urllib.parse
 
-server_address = "127.0.0.1:60005"
+server_address = "127.0.0.1:8188"
 client_id = str(uuid.uuid4())
 from config import workflow
 
@@ -60,11 +60,12 @@ def comfy_generate(path):
     prompt = json.loads(prompt_text)
 
     #set the text prompt for our positive CLIPTextEncode
-    prompt["9"]["inputs"]["image"] = "../../ICRelighting_server/{}".format(path)
+    prompt["9"]["inputs"]["image"] = "../../../../Documents/c84360043/ICRelighting_server/{}".format(path)
 
     ws = websocket.WebSocket()
     ws.connect("ws://{}/ws?clientId={}".format(server_address, client_id))
     images = get_images(ws, prompt)
+    ws.close()
 
     # # save images to disk
     # for node_id in images:
